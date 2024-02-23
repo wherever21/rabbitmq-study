@@ -16,7 +16,6 @@ public class PdfController {
 
     @GetMapping("/publish")
     public ResponseEntity<String> sendMessage(){
-        rabbitMQProducer.send("test.png");
         return ResponseEntity.ok("Message sent to RabbitMQ...");
     }
 
@@ -25,5 +24,11 @@ public class PdfController {
     public ResponseEntity<String> sendUserMessage(){
         rabbitMQProducer.userInfoSend("mkang@makeflow.co.kr");
         return ResponseEntity.ok("User Message sent to RabbitMQ...");
+    }
+
+    @GetMapping("/test/publish")
+    public ResponseEntity<String> sendTestMessage(String message){
+        rabbitMQProducer.sentTest(message);
+        return ResponseEntity.ok("Test Message sent to RabbitMQ ...");
     }
 }

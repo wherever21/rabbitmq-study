@@ -22,5 +22,10 @@ public class RabbitMQListener {
     public void userReceiver(UserResetEvent userResetEvent){
         logger.info("Received User Message -> {}", userResetEvent.getUsername());
     }
+
+    @RabbitListener(queues = {"queue1"})
+    public void testReceiver(String message){
+        logger.info("Received Test Message : {}", message);
+    }
 }
 

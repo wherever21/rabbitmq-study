@@ -27,4 +27,9 @@ public class RabbitMQProducer {
         logger.info("User Message Sent -> {}", username);
         rabbitTemplate.convertAndSend("user.exchange", "user.reset.event", event);
     }
+
+    public void sentTest(String message){
+        logger.info("Sent Test Message  : {}", message);
+        rabbitTemplate.convertAndSend("exchange1", "routing.key1", message);
+    }
 }
